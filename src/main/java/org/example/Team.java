@@ -27,6 +27,9 @@ public class Team {
         for (Player element: playList){
             total += element.getAge();
         }
+        if (playList.size() == 0){
+            return 0.0;
+        }
         return total / playList.size();
     }
     public double averageCredit() {
@@ -35,7 +38,20 @@ public class Team {
         for (Player element: playList){
             total += element.getCredit();
         }
+        if (playList.size() == 0){
+            return 0.0;
+        }
         return total / playList.size();
+    }
+
+    public String noOccupiedByWho(int i){
+        ArrayList<Player> playList = players.getPlayersList();
+        for (Player element: playList){
+            if(element.getNo() == i){
+                return element.getName();
+            }
+        }
+        return "";
     }
 
     public Team(String name, Players players)
@@ -43,10 +59,29 @@ public class Team {
         this.name = name;
         this.players = players;
     }
-
+    public void printPlayers(){
+        players.printPlayers();
+    }
+    public void printPlayersForTeamView(){
+        players.printPlayersForTeamView();
+    }
+    public void editPlayer(String name, String newName, Double credit, Integer age, Integer no, String team){
+        players.editPlayer(name, newName, credit, age, no, team);
+    }
+    public void addPlayer(Player player){
+        players.addPlayer(player);
+    }
+    public void removePlayer(String name){
+        players.removePlayer(name);
+    }
+    public boolean isNoUsed(int no){
+        return players.isNoUsed(no);
+    }
     public String toString()
     {
         return String.format(Utils.teamsFormat, name, players.getLength(), averageCredit(), averageAge());
     }
-
+    public Players getByLevel(String league){
+        return players.getByLevel(league);
+    }
 }

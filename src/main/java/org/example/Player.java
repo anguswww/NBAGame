@@ -66,4 +66,7 @@ public class Player {
     public String toString(){
         return String.format(Utils.PlayerFormat, name, credit, level, No, age);
     }
+    public String toStringForTeamView(){
+        return String.format(Utils.DisplayPlayerFromAllTeamsFormat, name, credit, level, age, No, team);
+    }
 }

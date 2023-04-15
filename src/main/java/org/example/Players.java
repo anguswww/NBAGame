@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Players {
     public ArrayList<Player> getPlayersList() {
@@ -16,16 +17,56 @@ public class Players {
     {
         Players.add(player);
     }
+    public void editPlayer(String name, String newName, Double credit, Integer age, Integer no, String team){
+        for (Player element: Players){
+            if (Objects.equals(element.getName(), name)){
+                element.setName(newName);
+                element.setAge(age);
+                element.setCredit(credit);
+                element.setNo(no);
+                element.setTeam(team);
+            }
+        }
+    }
+    public Players getByLevel(String league){
+        Players out = new Players();
+        for (Player element: Players) {
+            if (Objects.equals(element.getLevel(), league)){
+                out.addPlayer(element);
+            }
+        }
+        return out;
+    }
+    public boolean isNoUsed(int no){
+        for (Player element: Players){
+            if (Objects.equals(element.getNo(), no)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public void removePlayer(String name)
+    {
+        for (Player element: Players){
+            if (Objects.equals(element.getName(), name)){
+                Players.remove(element);
+                return;
+            }
+        }
+    }
     public int getLength()
     {
         return Players.size();
     }
     public void printPlayers(){
-        Utils.playerHeader();
         for (Player element: Players){
             System.out.print(element);
         }
-        Utils.playerTableEnd();
+    }
+    public void printPlayersForTeamView(){
+        for (Player element: Players){
+            System.out.print(element.toStringForTeamView());
+        }
     }
 
 }
