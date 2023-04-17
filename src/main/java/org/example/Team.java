@@ -54,6 +54,10 @@ public class Team {
         return "";
     }
 
+    public boolean doesPlayerNameExist(String name){
+        return players.doesPlayerNameExist(name);
+    }
+
     public Team(String name, Players players)
     {
         this.name = name;

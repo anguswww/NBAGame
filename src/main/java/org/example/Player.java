@@ -58,7 +58,7 @@ public class Player {
     {
         this.name = name;
         this.credit = credit;
-        this.level = level;
+        this.level = level; // leaving this for back compat but its useless. dont wanna refactor.
         this.age = age;
         this.team = team;
         this.No = No;

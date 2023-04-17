@@ -25,6 +25,18 @@ public class Players {
                 element.setCredit(credit);
                 element.setNo(no);
                 element.setTeam(team);
+                if (credit>=2000){
+                    element.setLevel("All Star");
+                }
+                else if (credit>=1500){
+                    element.setLevel("Core");
+                }
+                else if (credit>=1000){
+                    element.setLevel("Common");
+                }
+                else {
+                    element.setLevel("Edge");
+                }
             }
         }
     }
@@ -53,6 +65,14 @@ public class Players {
                 return;
             }
         }
+    }
+    public boolean doesPlayerNameExist(String name){
+        for (Player element: Players){
+            if (Objects.equals(element.getName().toLowerCase(), name.toLowerCase())){
+                return true;
+            }
+        }
+        return false;
     }
     public int getLength()
     {
